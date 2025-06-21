@@ -34,4 +34,4 @@ class KisWts:
     
     def load_url(self, url: str) -> None:
         self.driver.get(url)
-        self.util.wait(EC.invisibility_of_element_located((By.CSS_SELECTOR, "div.loading")))
+        self.util.wait(EC.invisibility_of_element_located((By.CSS_SELECTOR, "div.loading")), timeout=180)

@@ -26,6 +26,14 @@ class WebDriverUtil:
 
         return wait.until(EC.visibility_of_element_located(mark))
 
+    def wait_for_present(self, mark: Union[Tuple[str, str], str], timeout: int = 60):
+        wait = WebDriverWait(self.driver, timeout)
+
+        if isinstance(mark, str):
+            mark = (By.CSS_SELECTOR, mark)
+
+        return wait.until(EC.presence_of_element_located(mark))
+
     def wait_and_click(self, mark: Union[WebElement, Tuple[str, str], str], timeout: int = 60):
         wait = WebDriverWait(self.driver, 60)
 

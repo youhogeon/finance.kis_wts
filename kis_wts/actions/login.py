@@ -2,6 +2,8 @@
 from dataclasses import dataclass
 from typing import Optional
 
+from selenium.webdriver.remote.webdriver import WebDriver
+
 from kis_wts.actions.base import Action, ActionResult
 from kis_wts.exception import KisWtsException
 from kis_wts.kis_wts import KisWts
@@ -43,6 +45,11 @@ class LoginAction(Action[LoginActionResult]):
         raise KisWtsException('로그인에 실패했습니다.')
 
     def is_logged_in(self, kis: KisWts) -> Optional[str]:
-        elem = kis.util.wait_for_visible('.my')
+        def wait_fn(driver: WebDriver):
+            return driver.current_url.endswith(self.main_path)
+        
+        kis.util.wait(wait_fn)
+
+        elem = kis.util.find_element('.my')
 
         return elem.text

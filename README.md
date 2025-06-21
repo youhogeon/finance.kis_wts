@@ -5,6 +5,8 @@
 * 한국투자증권 보안프로그램(필수 프로그램 限) 설치
 * 한국투자증권 브라우저인증서 발급
     * `브라우저인증서 발급 방법` 섹션 참고
+* `pip install -r requirements.txt`
+* `cp config.json.sample config.json` 후 `config.json` 수정
 
 ## 지원하는 Action
 * 로그인

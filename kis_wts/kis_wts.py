@@ -16,7 +16,7 @@ T = TypeVar('T', bound='ActionResult')
 class KisWts:
     def __init__(
         self,
-        userdata_path: Optional[str] = None,
+        userdata_path: Optional[str] = None, # 절대경로
     ):
         self.userdata_path = userdata_path or os.path.join(os.getcwd(), 'userdata')
 
